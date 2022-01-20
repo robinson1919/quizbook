@@ -33,16 +33,41 @@ function quizbook_exam_activation_error() {
     printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
 }
 
+
 /*
 * Create the Post Types for exams
 */
 require_once plugin_dir_path(__FILE__) . 'includes/posttype.php';
-register_activation_hook(__FILE__, 'quizbook_exams_rewrite_flush'); 
+register_activation_hook(__FILE__, 'quizbook_exam_rewrite_flush'); 
 
 
 /*
 * Adds Roles y Permissions to Quizbook Exams
 */
 require_once plugin_dir_path( __FILE__ ) . 'includes/roles.php';
-register_activation_hook( __FILE__, 'quizbook_exams_agregar_capabilities' );
-register_deactivation_hook( __FILE__, 'quizbook_exams_remover_capabilities' );
+register_activation_hook( __FILE__, 'quizbook_exam_agregar_capabilities' );
+register_deactivation_hook( __FILE__, 'quizbook_exam_remover_capabilities' );
+
+
+/*
+* Adds Metaboxes to quizbook Exams
+*/
+require_once plugin_dir_path( __FILE__ ) . 'includes/metaboxes.php';
+
+
+/*
+* Adds CSS and JS to quizbook Exams
+*/
+require_once plugin_dir_path( __FILE__ ) . 'includes/scripts.php';
+
+
+/*
+* Adds CSS and JS to quizbook Exams
+*/
+require_once plugin_dir_path( __FILE__ ) . 'includes/shortcode.php';
+
+
+/*
+* Adds new columns to the admin panel for Exams
+*/
+require_once plugin_dir_path( __FILE__ ) . 'includes/columns.php';

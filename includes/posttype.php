@@ -1,12 +1,12 @@
 <?php
 if(!defined('ABSPATH')) exit('No direct script access allowed');
 
-add_action( 'init', 'quizbook_exams_post_type' );
+add_action( 'init', 'quizbook_exam_post_type' );
 
-function quizbook_exams_post_type() {
+function quizbook_exam_post_type() {
 	$labels = array(
 		'name'               => _x( 'Exams', 'post type general name', '' ),
-		'singular_name'      => _x( 'Examen', 'post type singular name', '' ),
+		'singular_name'      => _x( 'Exam', 'post type singular name', '' ),
 		'menu_name'          => _x( 'Exams', 'admin menu', '' ),
 		'name_admin_bar'     => _x( 'Examen', 'add new on admin bar', '' ),
 		'add_new'            => _x( 'Add Nuevo', 'book', '' ),
@@ -30,22 +30,26 @@ function quizbook_exams_post_type() {
 		'show_in_menu'       => true,
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'exams' ),
-		'capability_type'    => array('exam', 'exams'),
+		// 'capability_type'    => array('exam', 'exams'),
+		'capability_type'    => 'post',
         'menu_position'      => 7,
         'menu_icon'          => 'dashicons-welcome-write-blog',
 		'has_archive'        => true,
 		'hierarchical'       => false,
-        'supports'           => array( 'title' ),
+        'supports'           => array( 'title', 'author', 'editor'),
         'map_meta_cap'       => true,
 	);
 
 	register_post_type( 'exams', $args );
 }
 
+add_Action( 'init', 'quizbook_exam_post_type');
+
+
 /**
  * Flush rewrite rules on activation.
  */
-function quizbook_exams_rewrite_flush() {
-	quizbook_exams_post_type();
+function quizbook_exam_rewrite_flush() {
+	quizbook_exam_post_type();
 	flush_rewrite_rules();
 }

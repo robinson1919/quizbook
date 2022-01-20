@@ -3,7 +3,7 @@
 * Adds Capabilities
 */
 
-function quizbook_exams_agregar_capabilities() {
+function quizbook_exam_agregar_capabilities() {
 
     $roles = array( 'administrator', 'editor', 'quizbook' );
 
@@ -34,7 +34,7 @@ function quizbook_exams_agregar_capabilities() {
 /**
 * Remove Task-level capabilities to Administrator, Editor, and Task Logger.
 */
-function quizbook_exams_remover_capabilities() {
+function quizbook_exam_remover_capabilities() {
 
     $manager_roles = array( 'administrator', 'editor' );
 
